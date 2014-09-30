@@ -13,7 +13,7 @@ set backspace=start,eol,indent " backspace to delete everything
 set swapfile       " enable swapfile
 "set directory=/tmp " where swapfile store
 set backup         " enable backup
-"set backupdir=/tmp " where backupfile store
+set backupdir=/tmp " where backupfile store
 set viminfo='50,\"1000,n"~/.vim/info " recent 50files info, 1000registers store in ~/.vim/info
 
 set ignorecase " ignore capital or not
@@ -240,7 +240,7 @@ NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'taka84u9/unite-git'
 NeoBundle 'thinca/vim-unite-history'
 
-nnoremap <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap <C-b> :<C-u>Unite buffer file dwm file_mru directory_mru<CR>
 nnoremap <C-d> :<C-u>Unite dwm outline fold <CR>
 nnoremap <C-y> :<C-u>Unite history/yank<CR>
@@ -249,7 +249,7 @@ nmap <Leader>f [unite]
 let g:unite_source_history_yank_enable=1
 let g:unite_enable_start_insert=1
 
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir file file/new -buffer-name=file<CR>
 nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir -buffer-name=register register<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
@@ -527,21 +527,21 @@ let g:unite_source_menu_menus.startup = {
 \   ]
 \}
 
-" command! UniteStartup
-" \	Unite
-" \	output:echo\ "====\ menu\ ====" menu:startup
-" \	output:echo\ "\ "
-" \	output:echo\ "====\ file\ ====" startup_file
-" \	output:echo\ "\ "
-" \	output:echo\ "====\ file\ mru\ ====" startup_file_mru
-" \	output:echo\ "\ "
-" \	output:echo\ "====\ directory\ mru\ ====" startup_directory_mru
-" \	output:echo\ "\ "
-" \	-hide-source-names
-" \	-no-split
-" 
-" augroup startup
-" 	autocmd!
-" 	autocmd VimEnter * nested if @% == '' | UniteStartup 
-" augroup END
+command! UniteStartup
+ \	Unite
+ \	output:echo\ "====\ menu\ ====" menu:startup
+ \	output:echo\ "\ "
+ \	output:echo\ "====\ file\ ====" startup_file
+ \	output:echo\ "\ "
+ \	output:echo\ "====\ file\ mru\ ====" startup_file_mru
+ \	output:echo\ "\ "
+ \	output:echo\ "====\ directory\ mru\ ====" startup_directory_mru
+ \	output:echo\ "\ "
+ \	-hide-source-names
+ \	-no-split
+ 
+ augroup startup
+ 	autocmd!
+ 	autocmd VimEnter * nested if @% == '' | UniteStartup 
+ augroup END
 " }}}

@@ -11,5 +11,5 @@ Install
 -------
 
 ```sh
-$ ./dotfiles/setup.sh
+$ bash ./dotfiles/bin/setup.sh
 ```
