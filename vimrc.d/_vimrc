@@ -1,0 +1,41 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" VIM設定ファイル
+"
+" @Author Hajime <mail@hazime.org>
+" @See http://motw.mods.jp/Vim/command.html
+
+"
+" 基本的な設定
+"
+source ~/.vimrc.basic
+
+"
+" キーバインドの設定
+"
+source ~/.vimrc.keybind
+
+"
+" ネオバンドルプラグインの設定
+"
+source ~/.vimrc.neoBundle
+
+"
+" ネオコンプリートの設定
+"
+source ~/.vimrc.neoComplete
+
+"
+" Uniteの設定
+"
+source ~/.vimrc.unite
+
+"
+" タイル式マネージャの設定
+"
+source ~/.vimrc.dwm
+
+"
+" 見た目の設定
+"
+source ~/.vimrc.look_and_feel

@@ -1,0 +1,39 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" 見た目の設定
+"
+
+"
+" カラースキーマ一式
+"
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'croaker/mustang-vim'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'vim-scripts/Lucius'
+NeoBundle 'vim-scripts/Zenburn'
+NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'therubymug/vim-pyte'
+NeoBundle 'tomasr/molokai'
+
+
+"set background=light
+set background=dark
+colorscheme jellybeans
+"colorscheme hybrid
+"colorscheme hybrid-light
+"colorscheme railscasts
+"colorscheme solarized
+"colorscheme molokai
+"colorscheme lucius
+"colorscheme zenburn
+"colorscheme mrkn256
+
+"
+" ステータスラインの装飾
+"
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Lokaltog/vim-powerline'

@@ -1,0 +1,52 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" KEYBINDの設定
+"
+
+" ZZは保存終了
+nnoremap ZZ :wq
+" ZQ Qでの終了を禁止
+nnoremap ZQ <Nop>
+nnoremap Q <Nop>
+
+" カーソル移動を表示行ベースにする
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+" ESCとF1をよく間違えるのでF1を殺す
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" jj でインサートモードから脱出
+inoremap jj <ESC>
+
+" F2 でペーストモードをトグル
+set pastetoggle=<F2>
+
+" <Leader>を,にする
+let mapleader = ","
+
+" :と;を打ち間違えるので同じ挙動に
+nnoremap ; :
+
+" マークの表示
+nnoremap <Leader>m :<C-u>marks<CR>
+
+" レジスタの表示
+nnoremap <Leader>r :<C-u>register<CR>
+
+"nnoremap <Leader>v <C-w>v<C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
+"nnoremap <ESC><ESC> :nohlsearch<CR><ESC> 
+
+" VimRCをリロードする
+nnoremap rv :<C-u>source ~/.vimrc<CR>
+
+" 編集位置を中央へもってくる
+nnoremap <Leader>, zz

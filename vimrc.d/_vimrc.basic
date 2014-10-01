@@ -1,0 +1,115 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" VIM設定ファイル
+"
+" @Author Hajime <mail@hazime.org>
+"
+
+"
+" 基本的な設定
+"
+
+" VIMモードにする
+set nocompatible
+
+" 他の場所で更新されたら自動的に読み込む
+set autoread
+
+" バックスペースで削除可能なものを増やす
+set backspace=start,eol,indent
+
+" スワップファイルを使う
+set swapfile
+set directory=~/.vim/tmp
+
+" バックアップファイルを使う
+set backup
+set backupdir=~/.vim/tmp
+
+" VIMコマンド履歴保持数
+set viminfo='100
+
+" VIMレジストリ保持数
+set viminfo+="1000
+
+" VIMINFO保存ファイル
+set viminfo+=n~/.vim/info
+
+" 検索時に大文字小文字を無視
+set ignorecase
+
+" ただし、検索文字に大文字小文字があれば無視しない
+set smartcase  " do not ignore capital when search words includs both
+
+" ウィンドウ幅で折り返す
+set wrap
+
+" 固定折り返し文字幅を持たない
+set textwidth=0
+
+" 文字コード判定順序
+set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932
+
+" 検索文字をハイライトしない
+set nohlsearch
+
+" ルーラー表示
+set ruler
+
+" 端末のタイトルを変更する
+set title
+
+" 行番号を表示
+set number
+
+" シンタックスハイライトを有効
+syntax on
+
+" 不可視文字を可視化する
+set t_Co=256
+set lcs=tab:>-,trail:-,nbsp:%
+set list
+highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
+highlight JpSpace cterm=underline ctermfg=7 guifg=7
+highlight FirstSpace cterm=underline ctermfg=7 guifg=7
+au BufRead,BufNew * match JpSpace /　/
+au BufRead,BufNew * match FirstSpace /^\s/
+
+" モードラインの設定
+set modeline
+set modelines=5
+
+" マウスイベントをキャプチャする
+set mouse=a
+set ttymouse=xterm2
+
+" インデント設定
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set cindent
+set noexpandtab
+set nosmarttab
+set showmatch
+
+" ファイルタイプ別のインデント設定
+autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType sass       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+
+" Grep Modeをinternalにする
+set grepprg=internal
+
+" ステータスラインの設定
+set laststatus=2
+set showmode
+set showcmd
+set wildmenu
+set scrolloff=8
+
