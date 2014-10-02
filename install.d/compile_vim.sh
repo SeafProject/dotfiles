@@ -7,6 +7,7 @@ sudo apt-get install \
 	liblua5.1-dev \
 	libperl-dev \
 	python3 \
+	python-dev \
 	libpython3-dev \
 	libtool-doc autoconf automake gcj-jdk \
 	autotools-dev libltdl-dev libltdl7 \
@@ -23,6 +24,7 @@ pushd /usr/local/src
 			--enable-gui=gnome2 \
 			--enable-luainterp=yes \
 			--with-compiledby="Hajime MATSUMOTO <mail@hazime.org>" \
+			--enable-pythoninterp \
 			--enable-fail-if-missing
 
 		[ $? -ne 0 ] && exit $?
