@@ -39,3 +39,8 @@ source ~/.vimrc.dwm
 " 見た目の設定
 "
 source ~/.vimrc.look_and_feel
+
+"
+" ローカル
+"
+source ~/.vimrc.local

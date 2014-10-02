@@ -21,5 +21,10 @@ ln -s "$DIR/vimrc.d/_vimrc.dwm" "$HOME/.vimrc.dwm"
 ln -s "$DIR/vimrc.d/_vimrc.unite" "$HOME/.vimrc.unite"
 ln -s "$DIR/vimrc.d/_vimrc.look_and_feel" "$HOME/.vimrc.look_and_feel"
 
+if [ ! -e $HOME/.vimrc.local ]
+then
+	touch $HOME/.vimrc.local
+fi
+
 
 /usr/local/bin/vim +NeoBundleInstall +q
