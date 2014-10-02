@@ -24,8 +24,8 @@ nnoremap [unite] <Nop>
 nmap <Leader>f [unite]
 
 " ショートカット
-nnoremap <C-f>c :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory_mru<CR>
-nnoremap <C-f>f :<C-u>Unite file file/new directory_mru file_mru<CR>
+nnoremap <C-f><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
+nnoremap <C-f><C-c> :<C-u>Unite file file/new directory_mru file_mru<CR>
 nnoremap <C-b> :<C-u>Unite buffer dwm directory_mru<CR>
 nnoremap <C-d> :<C-u>Unite dwm outline fold <CR>
 nnoremap <C-y> :<C-u>Unite history/yank<CR>
