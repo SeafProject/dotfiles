@@ -89,5 +89,9 @@ fi
 
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-[ -f ~/.zsh/local/.zshrc.sh ] && source ~/.zsh/local/.zshrc.sh
 
+function AutoTmux() {
+	test -z "$TMUX" && (tmux -S "/tmp/tmux-$(whoami)" attach || tmux -S "/tmp/tmux-$(whoami)")
+}
+
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
