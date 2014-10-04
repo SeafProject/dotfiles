@@ -81,10 +81,15 @@ alias l="ls"
 
 
 SSHAGENT=$(which ssh-agent)
-SSHAGENTARGS="-s"
-if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-	eval `$SSHAGENT $SSHAGENTARGS`
-	trap "kill $SSH_AUTH_PID" 0
+
+echo -n "ssh-agent: "
+source ~/.ssh-agent-info
+ssh-add -l > /dev/null
+if [ $? -eq 2 ]
+then
+	echo -n "ssh-agent: restart..."
+	ssh-agent > ~/.ssh-agent-info
+	source ~/.ssh-agent-info
 fi
 
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
