@@ -83,13 +83,18 @@ alias l="ls"
 SSHAGENT=$(which ssh-agent)
 
 echo -n "ssh-agent: "
-source ~/.ssh-agent-info
+if [ -e ~/.ssh-agent-info ]
+then
+	source ~/.ssh-agent-info
+fi
 ssh-add -l > /dev/null
 if [ $? -eq 2 ]
 then
 	echo -n "ssh-agent: restart..."
 	ssh-agent > ~/.ssh-agent-info
 	source ~/.ssh-agent-info
+else
+	echo "Running"
 fi
 
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
