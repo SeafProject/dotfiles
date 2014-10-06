@@ -7,4 +7,3 @@ do
 done
 
 [ -f ~/.zsh/local/.zprofile.sh ] && ~/.zsh/local/.zprofile.sh
-
