@@ -115,6 +115,3 @@ let g:ref_phpmanual_path = "/home/kurari/.vim/php-chunked-xhtml/"
 nmap ,ra :<C-u>Ref webdict alc 
 nmap ,rw :<C-u>Ref webdict wiktionary 
 nmap ,rp :<C-u>Ref phpmanual 
-
-" Git
-NeoBundle 'toppe/vim-fugitive'
