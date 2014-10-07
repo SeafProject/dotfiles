@@ -80,7 +80,8 @@ set modeline
 set modelines=5
 
 " マウスイベントをキャプチャする
-set mouse=a
+" set mouse=a
+set mouse=n
 set ttymouse=xterm2
 
 " インデント設定

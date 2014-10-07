@@ -37,6 +37,9 @@ NeoBundle 'Shougo/vimproc',{'build':
 
 " VimShell
 NeoBundle 'Shougo/vimshell'
+nnoremap <silent> ,is :VimShell<CR>
+nnoremap <silent> ,iphp :VimShellInteractive php<CR>
+vmap <silent> ,ss :VimShellSendString<CR>
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
@@ -63,6 +66,8 @@ NeoBundle 'tsukkee/unite-tag'
 
 NeoBundle 'Shougo/neomru.vim'
 
+NeoBundle 'sudo.vim'
+
 "
 " Vim Filerの設定
 "
@@ -74,3 +79,42 @@ let g:vimfiler_safe_mode_by_default= 0
 autocmd FileType vimfiler call unite#custom_default_action('directory','cd')
 nnoremap <silent> [vimfiler]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
+"
+" Memo
+"
+NeoBundle 'git://github.com/fuenor/qfixhowm'
+
+" 辞書
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'mfumi/ref-dicts-en'
+NeoBundle 'mtyru/vim-altercmd'
+"vim-ref
+"Ref webdictでalcを使う設定
+let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
+"let g:ref_source_webdict_use_cache = 1
+let g:ref_source_webdict_sites = {
+            \ 'alc' : {
+            \   'url' : 'http://eow.alc.co.jp/%s/UTF-8/',
+            \   'cache' : 1
+            \   },
+            \ 'wiktionary' : {
+            \   'url' : 'http://ja.wiktionary.org/wiki/%s',
+            \   'keyword_encoding': 'utf-8',
+            \   'cache' : 1
+            \   }
+            \ }
+function! g:ref_source_webdict_sites.alc.filter(output)
+      return join(split(a:output, "\n")[42 :], "\n")
+endfunction
+
+" 
+" vimshell% cd ~/.vim/
+" vimshell% curl -sSL "http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror" | tar zxvf -
+"
+let g:ref_phpmanual_path = "/home/kurari/.vim/php-chunked-xhtml/"
+nmap ,ra :<C-u>Ref webdict alc 
+nmap ,rw :<C-u>Ref webdict wiktionary 
+nmap ,rp :<C-u>Ref phpmanual 
+
+" Git
+NeoBundle 'toppe/vim-fugitive'
