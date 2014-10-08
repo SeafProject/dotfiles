@@ -43,6 +43,7 @@ vmap <silent> ,ss :VimShellSendString<CR>
 
 " Unite
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neossh.vim'
 
 " HTML5シンタックスを有効にする
 NeoBundle 'othree/html5.vim.git'
@@ -87,7 +88,6 @@ NeoBundle 'git://github.com/fuenor/qfixhowm'
 " 辞書
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'mfumi/ref-dicts-en'
-NeoBundle 'mtyru/vim-altercmd'
 "vim-ref
 "Ref webdictでalcを使う設定
 let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
@@ -111,7 +111,7 @@ endfunction
 " vimshell% cd ~/.vim/
 " vimshell% curl -sSL "http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror" | tar zxvf -
 "
-let g:ref_phpmanual_path = "/home/kurari/.vim/php-chunked-xhtml/"
+let g:ref_phpmanual_path = "/opt/vim/php-chunked-xhtml/"
 nmap ,ra :<C-u>Ref webdict alc 
 nmap ,rw :<C-u>Ref webdict wiktionary 
 nmap ,rp :<C-u>Ref phpmanual 
