@@ -20,11 +20,13 @@ set backspace=start,eol,indent
 
 " スワップファイルを使う
 set swapfile
-set directory=~/.vim/tmp
+" 末尾を//にするとフルパスで保存
+set directory=~/.vim/tmp//
 
 " バックアップファイルを使う
 set backup
-set backupdir=~/.vim/tmp
+" 末尾を//にするとフルパスで保存
+set backupdir=~/.vim/tmp//
 
 " VIMコマンド履歴保持数
 set viminfo='100
@@ -113,4 +115,3 @@ set showmode
 set showcmd
 set wildmenu
 set scrolloff=8
-
