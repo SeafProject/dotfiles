@@ -2,9 +2,9 @@
 "
 " タイル式マネージャの設定
 "
+" @See https://github.com/spolu/dwm.vim
+"
 NeoBundle 'spolu/dwm.vim'
-NeoBundle 'kannokanno/unite-dwm'
-
 
 " let g:dwm_master_pane_width=80
 let g:dwm_map_keys=0

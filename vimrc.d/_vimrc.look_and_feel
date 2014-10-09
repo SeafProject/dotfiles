@@ -2,6 +2,10 @@
 "
 " 見た目の設定
 "
+" 見た目のプレビュー付で見たいとき
+"
+" :Unite -auto-preview colorscheme
+"
 
 "
 " カラースキーマ一式
@@ -19,21 +23,25 @@ NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
 
-
-"set background=light
-set background=dark
-colorscheme jellybeans
-"colorscheme hybrid
-"colorscheme hybrid-light
-"colorscheme railscasts
-"colorscheme solarized
-"colorscheme molokai
-"colorscheme lucius
-"colorscheme zenburn
-"colorscheme mrkn256
-
 "
 " ステータスラインの装飾
 "
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Lokaltog/vim-powerline'
+
+let s:bundle = neobundle#get("jellybeans.vim")
+function! s:bundle.hooks.on_source(bundle)
+	set background=dark
+	colorscheme jellybeans
+endfunction
+
+if &term =~ "xterm-256color" || "screen-256color"
+	set t_Co=256
+	set t_Sf=[3%dm
+	set t_Sb=[4%dm
+elseif &term =~ "xterm-color"
+	colorscheme ron
+	set t_Co=8
+	set t_Sf=[3%dm
+	set t_Sb=[4%dm
+endif

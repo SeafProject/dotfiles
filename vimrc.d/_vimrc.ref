@@ -1,0 +1,40 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" 辞書の設定 
+"
+" vim +NeoBundleInstall +qall
+"
+" @Created 2014.10.10
+" @Author Hajime Matsumoto
+
+" 辞書
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'mfumi/ref-dicts-en'
+"vim-ref
+"Ref webdictでalcを使う設定
+let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
+"let g:ref_source_webdict_use_cache = 1
+let g:ref_source_webdict_sites = {
+            \ 'alc' : {
+            \   'url' : 'http://eow.alc.co.jp/%s/UTF-8/',
+            \   'cache' : 1
+            \   },
+            \ 'wiktionary' : {
+            \   'url' : 'http://ja.wiktionary.org/wiki/%s',
+            \   'keyword_encoding': 'utf-8',
+            \   'cache' : 1
+            \   }
+            \ }
+function! g:ref_source_webdict_sites.alc.filter(output)
+      return join(split(a:output, "\n")[42 :], "\n")
+endfunction
+
+" 
+" vimshell% cd ~/.vim/
+" vimshell% curl -sSL "http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror" | tar zxvf -
+"
+let g:ref_phpmanual_path = "/opt/vim/php-chunked-xhtml/"
+
+nmap ,ra :<C-u>Ref webdict alc 
+nmap ,rw :<C-u>Ref webdict wiktionary 
+nmap ,rp :<C-u>Ref phpmanual 

@@ -1,0 +1,15 @@
+" vim: set ft=vim ts=4 sw=4 sts=4 :
+"
+" VimShellの設定
+"
+" @Created 2014.10.10
+" @Author Hajime Matsumoto
+" @See https://github.com/Shougo/vimshell.vim/blob/master/doc/vimshell.txt
+"
+NeoBundle 'Shougo/vimshell'
+nnoremap   [vimshell]   <Nop>
+nmap       <Leader>s          [vimshell]
+
+nnoremap <silent> [vimshell]s :VimShell<CR>
+nnoremap <silent> [vimshell]iphp :VimShellInteractive php<CR>
+vmap <silent> [vimshell]s :VimShellSendString<CR>

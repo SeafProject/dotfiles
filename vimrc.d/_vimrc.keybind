@@ -20,6 +20,19 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" マウスの有効無効
+nnoremap <F3> :call ToggleMouse()<CR>
+inoremap <F3> :call ToggleMouse()<CR>
+function! ToggleMouse()
+	if &mouse == 'a'
+		set mouse =
+		echo "Mouse usage disabled"
+	else
+		set mouse=a
+		echo "Mouse usage enabled"
+	endif
+endfunction
+
 " jj でインサートモードから脱出
 inoremap jj <ESC>
 

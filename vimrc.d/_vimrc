@@ -3,6 +3,7 @@
 " VIM設定ファイル
 "
 " @Author Hajime <mail@hazime.org>
+" @Update 2014.10.10
 " @See http://motw.mods.jp/Vim/command.html
 
 "
@@ -23,22 +24,22 @@ source ~/.vimrc.neoBundle
 "
 " ネオコンプリートの設定
 "
-source ~/.vimrc.neoComplete
+" source ~/.vimrc.neoComplete
 
 "
 " Uniteの設定
 "
-source ~/.vimrc.unite
+" source ~/.vimrc.unite
 
 "
 " タイル式マネージャの設定
 "
-source ~/.vimrc.dwm
+" source ~/.vimrc.dwm
 
 "
 " 見た目の設定
 "
-source ~/.vimrc.look_and_feel
+" source ~/.vimrc.look_and_feel
 
 "
 " ローカル

@@ -1,29 +1,28 @@
 " vim: set ft=vim ts=4 sw=4 sts=4 :
 "
-" Neobundleの設定
+" Neobundleの設定 
+"
+" vim +NeoBundleInstall +qall
+"
+" @Update 2014.10.10
+" @Author Hajime Matsumoto
+" @See https://github.com/Shougo/neobundle.vim
 "
 
-" NeoBundle使用の準備
-filetype off
-filetype plugin indent on
+if !1 | finish | endif
 
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-" Installation check.
-if neobundle#exists_not_installed_bundles()
-  echomsg 'Not installed bundles : ' .
-        \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute ":NeoBundleInstall" command.'
-endif
+" Start Neo Bundle
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-filetype on
+" NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-"
-" NeoBundleリスト
-"
+" Vim Filer
+NeoBundle 'Shougo/vimfiler.vim'
 
 " Vim Procのコンパイル設定
 NeoBundle 'Shougo/vimproc',{'build': 
@@ -36,26 +35,44 @@ NeoBundle 'Shougo/vimproc',{'build':
 \}
 
 " VimShell
-NeoBundle 'Shougo/vimshell'
-nnoremap <silent> ,is :VimShell<CR>
-nnoremap <silent> ,iphp :VimShellInteractive php<CR>
-vmap <silent> ,ss :VimShellSendString<CR>
+source $HOME/.vimrc.vimshell
 
 " Unite
-NeoBundle 'Shougo/unite.vim'
+source $HOME/.vimrc.unite
+
+" :w sudo:% ができるようにする
+NeoBundle 'sudo.vim'
+
+" ssh://を編集できるようにする
 NeoBundle 'Shougo/neossh.vim'
+
+" Memo
+" @See https://sites.google.com/site/fudist/Home/qfixhowm/install
+NeoBundle 'fuenor/qfixhowm'
+
+" 辞書
+source $HOME/.vimrc.ref
+
+" 補完プラグイン
+source $HOME/.vimrc.neoComplete
+
+" タイル式ウィンドウ管理
+source $HOME/.vimrc.dwm
+
+" 見た目系のプラグイン
+source $HOME/.vimrc.look_and_feel
 
 " HTML5シンタックスを有効にする
 NeoBundle 'othree/html5.vim.git'
+
+" CoffeeScript用プラグイン
+NeoBundle 'kchmck/vim-coffee-script'
 
 " Align
 NeoBundle 'h1mesuke/vim-alignta.git'
 
 " TagList
 NeoBundle 'taglist.vim'
-
-" CoffeeScript用プラグイン
-NeoBundle 'kchmck/vim-coffee-script'
 
 " タグジャンプ
 NeoBundle 'szw/vim-tags'
@@ -65,53 +82,6 @@ NeoBundle 'tsukkee/unite-tag'
 
 
 
-NeoBundle 'Shougo/neomru.vim'
-
-NeoBundle 'sudo.vim'
-
-"
-" Vim Filerの設定
-"
-NeoBundle 'Shougo/vimfiler.vim'
-nnoremap [vimfiler] <Nop>
-nmap <Leader>f [vimfiler]
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default= 0
-autocmd FileType vimfiler call unite#custom_default_action('directory','cd')
-nnoremap <silent> [vimfiler]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-
-"
-" Memo
-"
-NeoBundle 'git://github.com/fuenor/qfixhowm'
-
-" 辞書
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'mfumi/ref-dicts-en'
-"vim-ref
-"Ref webdictでalcを使う設定
-let g:ref_source_webdict_cmd = 'lynx -dump -nonumbers %s'
-"let g:ref_source_webdict_use_cache = 1
-let g:ref_source_webdict_sites = {
-            \ 'alc' : {
-            \   'url' : 'http://eow.alc.co.jp/%s/UTF-8/',
-            \   'cache' : 1
-            \   },
-            \ 'wiktionary' : {
-            \   'url' : 'http://ja.wiktionary.org/wiki/%s',
-            \   'keyword_encoding': 'utf-8',
-            \   'cache' : 1
-            \   }
-            \ }
-function! g:ref_source_webdict_sites.alc.filter(output)
-      return join(split(a:output, "\n")[42 :], "\n")
-endfunction
-
-" 
-" vimshell% cd ~/.vim/
-" vimshell% curl -sSL "http://jp1.php.net/get/php_manual_ja.tar.gz/from/this/mirror" | tar zxvf -
-"
-let g:ref_phpmanual_path = "/opt/vim/php-chunked-xhtml/"
-nmap ,ra :<C-u>Ref webdict alc 
-nmap ,rw :<C-u>Ref webdict wiktionary 
-nmap ,rp :<C-u>Ref phpmanual 
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck

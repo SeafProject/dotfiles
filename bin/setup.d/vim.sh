@@ -58,4 +58,4 @@ fi
 #	sudo wget $PowerlineSymbolsConf -O /etc/fonts/conf.d/10-powerline-symbols.conf
 #fi
 #
-/usr/local/bin/vim +NeoBundleInstall +q
+vim +NeoBundleInstall +q

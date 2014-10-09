@@ -17,6 +17,7 @@ else
 	NeoBundleFetch 'Shougo/neocomplete.vim'
 	NeoBundle 'Shougo/neocomplcache.vim'
 endif
+
 if neobundle#is_installed('neocomplete')
 	let g:neocomplcate#enable_at_startup=1
 endif
