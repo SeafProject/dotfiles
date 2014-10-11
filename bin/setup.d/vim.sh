@@ -21,6 +21,8 @@ ln -s "$DIR/vimrc.d/_vimrc.dwm" "$HOME/.vimrc.dwm"
 ln -s "$DIR/vimrc.d/_vimrc.unite" "$HOME/.vimrc.unite"
 ln -s "$DIR/vimrc.d/_vimrc.look_and_feel" "$HOME/.vimrc.look_and_feel"
 ln -s "$DIR/vimrc.d/_vimrc.powerline" "$HOME/.vimrc.powerline"
+ln -s "$DIR/vimrc.d/_vimrc.vimshell" "$HOME/.vimrc.vimshell"
+ln -s "$DIR/vimrc.d/_vimrc.ref" "$HOME/.vimrc.ref"
 
 if [ ! -e $HOME/.vimrc.local ]
 then
@@ -58,4 +60,4 @@ fi
 #	sudo wget $PowerlineSymbolsConf -O /etc/fonts/conf.d/10-powerline-symbols.conf
 #fi
 #
-vim +NeoBundleInstall +q
+vim +NeoBundleInstall +qall
