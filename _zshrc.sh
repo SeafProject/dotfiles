@@ -29,7 +29,7 @@ autoload history-search-end
 #
 setopt auto_cd
 setopt auto_pushd
-setopt pushd_ignore_dups 
+setopt pushd_ignore_dups
 
 function cd() {
     builtin cd $@ && ls --color=auto;
@@ -85,7 +85,12 @@ SSHAGENT=$(which ssh-agent)
 
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-function StartSSHAgent() {
+#
+# 関数定義群
+#
+
+# SSH AGENTを起動する
+function start-ssh-agent() {
 	if [ -f ~/.ssh-agent-info ]
 	then
 		source ~/.ssh-agent-info
@@ -99,9 +104,58 @@ function StartSSHAgent() {
 	fi
 }
 
-
-function AutoTmux() {
+# 固定セッションでのtmux起動
+function auto-tmux() {
 	test -z "$TMUX" && (tmux -S "/tmp/tmux-$(whoami)" attach || tmux -S "/tmp/tmux-$(whoami)")
 }
 
+function zle-line-init {
+	# update status line
+	if [ -n "$TMUX" ]
+	then
+		# tmux
+		# 地味 ## {{{
+		#statbg="colour236"
+		#statfg="colour247"
+		#statl1bg="colour240"
+		#statl1fg="colour231"
+		#statl2bg="colour148"
+		#statl2fg="colour22"
+		#statr1bg="colour240"
+		#statr1fg="colour247"
+		#statr2bg="colour252"
+		#statr2fg="colour236"
+		# }}}
+		statbg="colour24"
+		statfg="colour117"
+		statl1bg="colour31"
+		statl1fg="colour231"
+		statl2bg="colour231"
+		statl2fg="colour23"
+		statr1bg="colour31"
+		statr1fg="colour117"
+		statr2bg="colour117"
+		statr2fg="colour23"
+		tmux set -g status-bg ${statbg} > /dev/null
+		tmux set -g status-fg ${statfg} > /dev/null
+		statl1="#[bg=${statl1bg}, fg=${statl1fg}] #H "
+		statl1a="#[bg=${statbg}, fg=${statl1bg}]⮀"
+		statl2="#[bg=${statl2bg}, fg=${statl2fg}] $vimode "
+		statl2a="#[bg=${statl1bg}, fg=${statl2bg}]⮀"
+		tmux set -g status-left "${statl2}${statl2a}${statl1}${statl1a}" > /dev/null
+		statr1="#[bg=${statr1bg}, fg=${statr1fg}] #($HOME/.battery) "
+		statr1a="#[bg=${statbg}, fg=${statr1bg}]⮂"
+		statr2="#[bg=${statr2bg}, fg=${statr2fg}] %Y-%m-%d(%a) %H:%M "
+		statr2a="#[bg=${statr1bg}, fg=${statr2bg}]⮂"
+		tmux set -g status-right "${statr1a}${statr1}${statr2a}${statr2}" > /dev/null
+	fi
+}
+
+function start-ssh-agent {
+	ssh-agent > a
+	source a
+	ssh-add .ssh/kurari_rsa
+}
+
+# ローカルファイルの読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
