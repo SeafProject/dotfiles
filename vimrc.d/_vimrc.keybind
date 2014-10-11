@@ -63,3 +63,10 @@ nnoremap rv :<C-u>source ~/.vimrc<CR>
 
 " 編集位置を中央へもってくる
 nnoremap <Leader>, zz
+
+" w!!でsudo経由で保存
+cmap w!! w !sudo tee > /dev/null %
+
+" w1を打った時はw!だと思う;w
+cmap w1 w! 
+cmap q1 q! 

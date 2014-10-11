@@ -126,6 +126,7 @@ function zle-line-init {
 		#statr2bg="colour252"
 		#statr2fg="colour236"
 		# }}}
+
 		statbg="colour24"
 		statfg="colour117"
 		statl1bg="colour31"
@@ -138,12 +139,12 @@ function zle-line-init {
 		statr2fg="colour23"
 		tmux set -g status-bg ${statbg} > /dev/null
 		tmux set -g status-fg ${statfg} > /dev/null
-		statl1="#[bg=${statl1bg}, fg=${statl1fg}] #H "
+		statl1="#[bg=${statl1bg}, fg=${statl1fg}] #(echo $HOST) "
 		statl1a="#[bg=${statbg}, fg=${statl1bg}]⮀"
-		statl2="#[bg=${statl2bg}, fg=${statl2fg}] $vimode "
+		statl2="#[bg=${statl2bg}, fg=${statl2fg}] #U "
 		statl2a="#[bg=${statl1bg}, fg=${statl2bg}]⮀"
 		tmux set -g status-left "${statl2}${statl2a}${statl1}${statl1a}" > /dev/null
-		statr1="#[bg=${statr1bg}, fg=${statr1fg}] #($HOME/.battery) "
+		statr1="#[bg=${statl1bg}, fg=${statl1fg}] #(tmux show-options -g prefix) "
 		statr1a="#[bg=${statbg}, fg=${statr1bg}]⮂"
 		statr2="#[bg=${statr2bg}, fg=${statr2fg}] %Y-%m-%d(%a) %H:%M "
 		statr2a="#[bg=${statr1bg}, fg=${statr2bg}]⮂"

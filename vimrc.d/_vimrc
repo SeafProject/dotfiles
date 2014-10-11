@@ -15,7 +15,6 @@ source ~/.vimrc.basic
 " キーバインドの設定
 "
 source ~/.vimrc.keybind
-
 "
 " ネオバンドルプラグインの設定
 "

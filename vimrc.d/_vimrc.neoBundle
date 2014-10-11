@@ -64,6 +64,7 @@ source $HOME/.vimrc.look_and_feel
 
 " HTML5シンタックスを有効にする
 NeoBundle 'othree/html5.vim.git'
+NeoBundle 'tpope/vim-surround'
 
 " CoffeeScript用プラグイン
 NeoBundle 'kchmck/vim-coffee-script'

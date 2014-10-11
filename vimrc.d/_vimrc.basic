@@ -69,7 +69,7 @@ syntax on
 
 " 不可視文字を可視化する
 set t_Co=256
-set lcs=tab:>-,trail:-,nbsp:%
+set lcs=tab:>.,nbsp:%,extends:\
 set list
 highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
 highlight JpSpace cterm=underline ctermfg=7 guifg=7
@@ -111,9 +111,17 @@ autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
 " Grep Modeをinternalにする
 set grepprg=internal
 
+"
 " ステータスラインの設定
+"
+" ステータスラインの高さ
 set laststatus=2
 set showmode
+
+" 入力したコマンドを表示する
 set showcmd
 set wildmenu
 set scrolloff=8
+
+" 背景は黒ベース
+set background=dark

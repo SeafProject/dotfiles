@@ -22,16 +22,16 @@ NeoBundle 'vim-scripts/Zenburn'
 NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'https://github.com/29decibel/codeschool-vim-theme.git'
 
 "
 " ステータスラインの装飾
 "
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Lokaltog/vim-powerline'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'Lokaltog/vim-powerline'
 
 let s:bundle = neobundle#get("jellybeans.vim")
 function! s:bundle.hooks.on_source(bundle)
-	set background=dark
 	colorscheme jellybeans
 endfunction
 
